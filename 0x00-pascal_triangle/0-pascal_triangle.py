@@ -3,9 +3,10 @@
 
 
 def pascal_triangle(n):
+    """ returns a list of list of pascal triangle """
     if n <= 0:
         return []
-    triangle = []
+    triangle = [[1]]
 
     for i in range(1, n):
         p_row = triangle[-1]

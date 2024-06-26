@@ -2,6 +2,8 @@
 """
 Pascal's Triangle
 """
+
+
 def pascal_triangle(n):
     if n <= 0:
         return []
@@ -17,4 +19,3 @@ def pascal_triangle(n):
         new_row.append(1)
         triangle.append(new_row)
     return triangle
-        

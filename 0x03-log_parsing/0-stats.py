@@ -6,7 +6,7 @@ import signal
 
 def print_statistics(status_counts, total_size):
     """Print the collected statistics."""
-    print(f"File size: {total_size}")
+    print("File size: {:d}".format(total_size))
     for code in sorted(status_counts.keys()):
         if status_counts[code] > 0:
             print("{:d}: {}".format(code, status_counts[code]))

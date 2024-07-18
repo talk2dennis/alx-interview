@@ -4,9 +4,8 @@ import sys
 import signal
 
 
-def print_statistics():
+def print_statistics(status_counts, total_size):
     """Print the collected statistics."""
-    global total_size, status_counts
     print(f"File size: {total_size}")
     for code in sorted(status_counts.keys()):
         if status_counts[code] > 0:
@@ -15,7 +14,7 @@ def print_statistics():
 
 def handle_sigint(signum, frame):
     """Handle the SIGINT signal (Ctrl + C) and print statistics."""
-    print_statistics()
+    print_statistics(status_counts, total_size)
     sys.exit(0)
 
 
@@ -24,7 +23,6 @@ signal.signal(signal.SIGINT, handle_sigint)
 
 if __name__ == "__main__":
     total_size = 0
-    file_size = 0
     line_count = 0
     status_counts = {200: 0, 301: 0, 400: 0, 401: 0,
                      403: 0, 404: 0, 405: 0, 500: 0}
@@ -38,16 +36,16 @@ if __name__ == "__main__":
                 if status_code in status_counts:
                     status_counts[status_code] += 1
                     line_count += 1
-            except Exception:
+            except BaseException:
                 pass
             if line_count % 10 == 0:
-                print_statistics()
+                print_statistics(status_counts, total_size)
                 # print()  # Print a blank line for readability
 
     except KeyboardInterrupt:
         print("\nKeyboard interrupt received while reading from stdin.")
-        print_statistics()
+        print_statistics(status_counts, total_size)
         sys.exit(0)
 
     # Print final statistics after reading all lines
-    print_statistics()
+    print_statistics(status_counts, total_size)

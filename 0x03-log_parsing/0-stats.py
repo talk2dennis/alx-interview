@@ -1,10 +1,8 @@
 #!/usr/bin/python3
 """ Log parsing module """
 import sys
-
-
-import sys
 import signal
+
 
 def print_statistics():
     """Print the collected statistics."""
@@ -20,6 +18,7 @@ def handle_sigint(signum, frame):
     print_statistics()
     sys.exit(0)
 
+
 # Register the SIGINT signal handler
 signal.signal(signal.SIGINT, handle_sigint)
 
@@ -32,7 +31,6 @@ if __name__ == "__main__":
     try:
         for line in sys.stdin:
             data = line.strip().split()
-            print(data)
             try:
                 status_code = int(data[-2])
                 file_size = int(data[-1])

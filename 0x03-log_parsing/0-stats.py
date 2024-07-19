@@ -31,9 +31,6 @@ if __name__ == "__main__":
             data = line.strip().split()
             try:
                 total_size += int(data[-1])
-            except BaseException:
-                pass
-            try:
                 status_code = int(data[-2])
                 if status_code in status_counts:
                     status_counts[status_code] += 1

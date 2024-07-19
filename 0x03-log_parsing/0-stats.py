@@ -30,9 +30,11 @@ if __name__ == "__main__":
         for line in sys.stdin:
             data = line.strip().split()
             try:
+                total_size += int(data[-1])
+            except BaseException:
+                pass
+            try:
                 status_code = int(data[-2])
-                file_size = int(data[-1])
-                total_size += file_size
                 if status_code in status_counts:
                     status_counts[status_code] += 1
                     line_count += 1

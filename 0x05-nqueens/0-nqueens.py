@@ -20,8 +20,8 @@ def nqueens():
     def isSafe(board, row, col):
         """ isSafe function """
         for i in range(col):
-            if (board[i] == row or board[i] - i == row - col
-                    or board[i] + i == row + col):
+            if (board[i] == row or board[i] - i == row - col or
+                    board[i] + i == row + col):
                 return False
         return True
 

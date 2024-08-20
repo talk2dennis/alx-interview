@@ -3,6 +3,7 @@
 uses greedy algorithm to make change for a given amount of money
 """
 
+
 def makeChange(coins, total):
     """
     makes change for a given amount of money

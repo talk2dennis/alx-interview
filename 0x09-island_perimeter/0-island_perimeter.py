@@ -7,19 +7,23 @@ def island_perimeter(grid):
 
     if not grid:
         return 0
+
+    rows, cols = len(grid), len(grid[0])
     perimeter = 0
-    for lst in grid:
-        if not all(isinstance(x, int) for x in lst):
-            return 0
-        for i in range(len(lst)):
-            if lst[i] == 1:
-                if i == 0 or lst[i - 1] == 0:
+
+    for r in range(rows):
+        for c in range(cols):
+            if grid[r][c] == 1:
+                # Check all four possible directions
+                if r == 0 or grid[r - 1][c] == 0:  # top
                     perimeter += 1
-                if i == len(lst) - 1 or lst[i + 1] == 0:
+                if r == rows - 1 or grid[r + 1][c] == 0:  # bottom
                     perimeter += 1
-                if grid.index(lst) == 0 or grid[grid.index(lst) - 1][i] == 0:
+                if c == 0 or grid[r][c - 1] == 0:  # left
                     perimeter += 1
-                if grid.index(lst) == len(grid) - 1 or grid[grid.index(lst) + 1][i] == 0:
+                if c == cols - 1 or grid[r][c + 1] == 0:  # right
                     perimeter += 1
+
     return perimeter
+
     

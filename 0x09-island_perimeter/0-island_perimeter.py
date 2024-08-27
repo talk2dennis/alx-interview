@@ -1,4 +1,4 @@
-#!/bin/usr/python3
+#!/usr/bin/python3
 """ a module to calculate the land perimeter of an island """
 
 

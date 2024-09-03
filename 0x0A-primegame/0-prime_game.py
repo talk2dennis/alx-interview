@@ -5,7 +5,7 @@
 def isWinner(x, nums):
     """
     Determine the winner after x rounds of the game.
-    Maria and Ben take turns picking numbers from 1 to n, 
+    Maria and Ben take turns picking numbers from 1 to n,
     and the player with the most primes wins the round.
 
     x: number of rounds
